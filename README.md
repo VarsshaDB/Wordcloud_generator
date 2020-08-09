@@ -1,2 +1,2 @@
 # Wordcloud_generator
-This is an python software which Automatically generates wordcloud based on the Input file given
+This is an python software which automatically generates wordcloud based on the given input file.
