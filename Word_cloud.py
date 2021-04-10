@@ -1,11 +1,6 @@
 import wordcloud
-import numpy as np
 from matplotlib import pyplot as plt
-from IPython.display import display
-import fileupload
-import io
-import sys
-print("Start")
+
 
 def calculate_frequencies(file_contents):
     # Here is a list of punctuations and uninteresting words you can use to process your text
@@ -15,7 +10,7 @@ def calculate_frequencies(file_contents):
     "have", "has", "had", "do", "does", "did", "but", "at", "by", "with", "from", "here", "when", "where", "how", \
     "all", "any", "both", "each", "few", "more", "some", "such", "no", "nor", "too", "very", "can", "will", "just"]
     
-    t=str.maketrans(".,:;'[]()*&^%$#@!~/?<>=-_",25*" ")
+    t=str.maketrans(".,:;'[]()&^%$#@!~/?<>=-_",25" ")
     file_contents=file_contents.translate(t)
     list_of_words=[]
     w=file_contents.split()
@@ -36,18 +31,20 @@ def calculate_frequencies(file_contents):
     cloud.generate_from_frequencies(freq)
     return cloud.to_array()
 
-filename=input("Enter your filename:")
 
-file = open(filename)
+file = open('poem.txt')
+
 
 line = file.read().replace("\n", " ")
 file.close()
 
+
 file_contents=line
 myimage = calculate_frequencies(file_contents)
+
+
 plt.imshow(myimage, interpolation = 'nearest')
 plt.axis('off')
 plt.show()
-print ("Image uploaded successfuly")
 
 
